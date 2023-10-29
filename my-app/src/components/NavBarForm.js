@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import css from './css/NavBarForm.module.css'
-import Form from './Form'
+import FormChild from './FormChild'
+
 
 
 export class NavBarForm extends Component {
@@ -12,33 +13,24 @@ export class NavBarForm extends Component {
       }
     }
 
-    logInHander(){
-        this.setState((prevState, prevProps) => {
-            console.log("prev state:", prevState.isLoggedIn)
-            console.log("prev props:",prevProps.isLoggedIn)
-            return {
-                isLoggedIn: prevState.isLoggedIn === true && false
-            }
-            
-        })
+
+    clickHandler = () => {
+        this.setState(
+            (prevState) => ({isLoggedIn: prevState.isLoggedIn === true ? false : true}), 
+            ()=> (console.log(this.state.isLoggedIn))
+            )
     }
 
-    logOutHandler(){
-        this.setState((prevState, prevProps) => {
-            console.log("prev state:",prevState.isLoggedIn)
-            console.log("prev props:",prevProps.isLoggedIn)
-            return {
-                isLoggedIn: prevState.isLoggedIn === false && true
-            }
-            
-        })
-    }
 
     render() {
         return (
         <div className={css.NavBar}>
             <h1>My Gallery</h1>
-            <Form isLoggedIn={this.state.isLoggedIn} />
+            <FormChild 
+            isLoggedIn={this.state.isLoggedIn}
+            clickHandler={this.clickHandler}
+            />
+            
         </div>
         )
     }
