@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import css from './css/NavBarForm.module.css'
 import Form from './Form'
-import LoginButton from './LoginButton'
+
 
 export class NavBarForm extends Component {
     constructor(props) {
@@ -39,8 +39,6 @@ export class NavBarForm extends Component {
         <div className={css.NavBar}>
             <h1>My Gallery</h1>
             <Form isLoggedIn={this.state.isLoggedIn} />
-            <LoginButton isLoggedIn={this.state.isLoggedIn} />
-            
         </div>
         )
     }
