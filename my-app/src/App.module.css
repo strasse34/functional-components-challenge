@@ -9,7 +9,8 @@ a {
     text-decoration: none;
 }
 .App {
-    display: grid;
+    display: flex;
+    justify-content: center;
     grid-template-rows: 60px auto 50px;
     grid-template-columns: 230px 1fr;
     column-gap: 0.5rem;
