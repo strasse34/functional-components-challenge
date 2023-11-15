@@ -1,12 +1,13 @@
 import css from './App.module.css';
-import ContentAPI from './components/ContentAPI';
+
+import ContentAPIHooks from './components/ContentAPIHooks';
 
 
 function App() {
   return (
     <div className={css.App}>
       
-      <ContentAPI />
+      <ContentAPIHooks />
     </div>
   );
 }

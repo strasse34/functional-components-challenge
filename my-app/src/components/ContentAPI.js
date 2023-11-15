@@ -11,8 +11,8 @@ export class Content extends Component {
       super(props)
       this.state = {
         isLoaded: false,
-        posts: [],
-        savedPosts:[]
+        savedPosts:[],
+        searchPosts: [],
       }
     }
 
@@ -22,19 +22,19 @@ export class Content extends Component {
 
       this.setState({
         isLoaded: true,
-        posts: fetchedPosts,
+        searchPosts: fetchedPosts,
         savedPosts: fetchedPosts,
       })
     
     }
     
     handleChange = (event) => {
-      const name = event.target.value.toLowerCase();
+      const search = event.target.value.toLowerCase();
       const filteredPosts = this.state.savedPosts.filter(post => {
-        return post.user.toLowerCase().includes(name);
+        return post.user.toLowerCase().includes(search);
       })
       this.setState({
-        posts: filteredPosts,
+        searchPosts: filteredPosts,
       })
     }
     componentDidMount() {
@@ -57,10 +57,10 @@ export class Content extends Component {
                   onChange={(event) => this.handleChange(event)}
                   /></label>
                 </form>
-                <h4>posts found: {this.state.posts.length}</h4>
+                <h4>posts found: {this.state.searchPosts.length}</h4>
             </div>
             <div className={css.SearchResults}>
-            {this.state.isLoaded ? (<PostItemAPI savedPosts={this.state.posts} />) : (<Loader />)}
+            {this.state.isLoaded ? (<PostItemAPI savedPosts={this.state.searchPosts} />) : (<Loader />)}
             </div>
       </div>
     )
